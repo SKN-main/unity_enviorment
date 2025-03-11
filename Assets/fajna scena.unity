@@ -223,8 +223,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.8919733, y: 2.4863694, z: 0.9144297}
-  m_Center: {x: -0.7446813, y: 1.5060842, z: 0.45965716}
+  m_Size: {x: 0.8919733, y: 2.4863694, z: 0.8}
+  m_Center: {x: 0, y: 0, z: 0.4}
 --- !u!4 &118938801 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b5dc2be04b6bf6c409c9da6090ca0496, type: 3}
@@ -242,10 +242,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bd5ddf5d40924ebbbd4a81fa2ddf850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agentParameters:
+    maxStep: 0
+  hasUpgradedFromAgentParameters: 1
+  MaxStep: 0
   ObstacleObjectTag: obstacle
   target: {fileID: 464837035}
   samochod: {fileID: 118938796}
   inny: {fileID: 223542741}
+  dziecko: {fileID: 0}
+  rBody: {fileID: 0}
+  Target: {fileID: 464837035}
 --- !u!114 &118938804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,7 +267,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rayDistance: 10
   angleOffset: 30
-  carObject: {fileID: 0}
+  carObject: {fileID: 118938801}
+--- !u!114 &118938805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118938796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d1c4e0b1822b495aa52bc52839ecb30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BrainParameters:
+    VectorObservationSize: 1
+    NumStackedVectorObservations: 1
+    m_ActionSpec:
+      m_NumContinuousActions: 0
+      BranchSizes: 01000000
+    VectorActionSize: 01000000
+    VectorActionDescriptions: []
+    VectorActionSpaceType: 0
+    hasUpgradedBrainParametersWithActionSpec: 1
+  m_Model: {fileID: 0}
+  m_InferenceDevice: 0
+  m_BehaviorType: 0
+  m_BehaviorName: My Behavior
+  TeamId: 0
+  m_UseChildSensors: 1
+  m_UseChildActuators: 1
+  m_DeterministicInference: 0
+  m_ObservableAttributeHandling: 0
 --- !u!1001 &122249656
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2939,15 +2977,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b5dc2be04b6bf6c409c9da6090ca0496, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.82928467
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b5dc2be04b6bf6c409c9da6090ca0496, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.30017307
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b5dc2be04b6bf6c409c9da6090ca0496, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.56
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b5dc2be04b6bf6c409c9da6090ca0496, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2981,6 +3019,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: MercedesCar
       objectReference: {fileID: 0}
+    - target: {fileID: 8410906440232176398, guid: b5dc2be04b6bf6c409c9da6090ca0496, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410906440232176398, guid: b5dc2be04b6bf6c409c9da6090ca0496, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410906440232176398, guid: b5dc2be04b6bf6c409c9da6090ca0496, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -3000,6 +3050,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b5dc2be04b6bf6c409c9da6090ca0496, type: 3}
       insertIndex: -1
       addedObject: {fileID: 118938803}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b5dc2be04b6bf6c409c9da6090ca0496, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 118938805}
   m_SourcePrefab: {fileID: 100100000, guid: b5dc2be04b6bf6c409c9da6090ca0496, type: 3}
 --- !u!1 &1469493145
 GameObject:
