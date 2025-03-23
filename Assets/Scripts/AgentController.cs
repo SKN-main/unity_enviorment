@@ -63,6 +63,7 @@ public class AgentController : Agent
 
     private void OnCollisionStay(Collision collision) {
         if (checkCollision(collision, "TRWA")) {
+            Debug.Log("Wejście do OnCollisionEnter");
             resetPosition();
         }
         
@@ -88,10 +89,11 @@ public class AgentController : Agent
     public override void OnEpisodeBegin()
     {
        // If the Agent fell, zero its momentum
-        if (this.transform.localPosition.y < 0)
+        if (this.transform.localPosition.y < -10)
         {
             this.rBody.angularVelocity = Vector3.zero;
             this.rBody.linearVelocity = Vector3.zero;
+            Debug.Log("Spadl na y < -10");
             resetPosition();
         }
     }
