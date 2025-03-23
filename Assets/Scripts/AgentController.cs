@@ -28,8 +28,10 @@ public class AgentController : Agent
             inny_Collider = inny.GetComponent<Collider>();
 
 
-        dziecko = transform.GetChild(0);
-        rBody = dziecko.GetComponent<Rigidbody>();
+        //assumes that the car is the 2nd child
+        //dziecko = transform.GetChild(1);
+        //rBody = dziecko.GetComponent<Rigidbody>();
+        rBody = transform.GetComponent<Rigidbody>();
         initialPosition = transform.position;
         initialRotation = transform.eulerAngles;
     }
@@ -83,7 +85,16 @@ public class AgentController : Agent
         //sensor.AddObservation(rBody.linearVelocity.z);
     }
 
-
+    public override void OnEpisodeBegin()
+    {
+       // If the Agent fell, zero its momentum
+        if (this.transform.localPosition.y < 0)
+        {
+            this.rBody.angularVelocity = Vector3.zero;
+            this.rBody.linearVelocity = Vector3.zero;
+            resetPosition();
+        }
+    }
     
     public override void OnActionReceived(ActionBuffers actionBuffers)
     {

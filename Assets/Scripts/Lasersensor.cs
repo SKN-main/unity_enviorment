@@ -23,7 +23,6 @@ public class Lasersensor : MonoBehaviour
         foreach (var direction in directions)
         {
             //przeniesienie promieni o ~2 metry do przodu, ~0.5 metra do gory??
-            //TODO
             Vector3 adjustedCords = new Vector3(0, 0.5f, 1.8f) + carObject.position;
             Debug.Log(carObject.position);
 
